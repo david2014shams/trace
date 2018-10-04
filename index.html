@@ -18,8 +18,15 @@
         remove
     </a>
     <pre data-bind="text: JSON.stringify(ko.toJS($data), null, 2)"></pre>
-    <button data-bind="click: console.log(ko.toJS($data))">$data</button>
+    <button data-bind="click: console.log(ko.toJS($data))">ko.toJS($data)</button>
     <button data-bind="click: alert(ko.toJS($data))">alert($data)</button>
+    <a href="#" data-bind="click: function() { console.log($data); }">
+        log($data)
+    </a>
+    <a href="#" data-bind="click: function() { console.log(ko.toJS($data)); }">
+        ko.toJS($data)
+    </a>
+    <a href="" class="remove" data-bind="text: name">remove</a>
 
     <div class="ep" id="fixed">Fixed</div>
     <div class="ep" id="relative">Relative<div class="ep" id="absolute">Absolute</div>
@@ -38,7 +45,7 @@
             <script>
                 var vm = {
                     name: ko.observable('David'),
-                    items: ko.observable([1,2,3,4])
+                    items: ko.observable([1, 2, 3, 4])
                 }
                 ko.applyBindings(vm);
                 (function (name) {
@@ -50,6 +57,18 @@
                     }
 
                 })('David')
+            </script>
+
+            <script>
+                $(function () {
+                    $(".remove").click(function () {
+                        // viewModel.items.remove(ko.dataFor(this));
+                        $(".remove").click(function () {
+                            console.log(ko.dataFor(this))
+                        })
+                    });
+
+                })
             </script>
 </body>
 
