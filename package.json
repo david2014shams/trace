@@ -18,6 +18,7 @@
   },
   "homepage": "https://github.com/david2014shams/trace#readme",
   "dependencies": {
+    "jquery": "^3.3.1",
     "knockout": "^3.4.2"
   }
 }

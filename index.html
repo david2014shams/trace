@@ -7,6 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Call stack</title>
     <link rel="stylesheet" href="./aero.css">
+    <script src="./node_modules/jquery/dist/jquery.js"></script>
     <script src="./node_modules/knockout/build/output/knockout-latest.debug.js"></script>
 </head>
 
@@ -26,7 +27,9 @@
     <a href="#" data-bind="click: function() { console.log(ko.toJS($data)); }">
         ko.toJS($data)
     </a>
-    <a href="" class="remove" data-bind="text: name">remove</a>
+    <a href="" class="remove" data-bind="text: name">remove
+        <span data-bind="click: handleClick($data)">handleClick()</span>
+    </a>
 
     <div class="ep" id="fixed">Fixed</div>
     <div class="ep" id="relative">Relative<div class="ep" id="absolute">Absolute</div>
@@ -45,7 +48,10 @@
             <script>
                 var vm = {
                     name: ko.observable('David'),
-                    items: ko.observable([1, 2, 3, 4])
+                    items: ko.observable([1, 2, 3, 4]),
+                    handleClick: function(data){
+                        console.log(data)
+                    }
                 }
                 ko.applyBindings(vm);
                 (function (name) {
@@ -60,15 +66,19 @@
             </script>
 
             <script>
-                $(function () {
-                    $(".remove").click(function () {
-                        // viewModel.items.remove(ko.dataFor(this));
-                        $(".remove").click(function () {
-                            console.log(ko.dataFor(this))
-                        })
-                    });
+                // ($(function () {
+                //     $(".remove").click(function () {
+                //         // viewModel.items.remove(ko.dataFor(this));
+                //         $(".remove").click(function () {
+                //             console.log(ko.dataFor(this))
+                //         })
+                //     });
 
-                })
+                // }))($)
+                ($(function(){
+                    console.log($)
+
+                }()))
             </script>
 </body>
 

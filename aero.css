@@ -29,4 +29,11 @@ body {
     position:absolute;
     left:50px;
     }
+
+
+    .remove {
+        position:fixed;
+        top:30px;
+        right:5px;
+        }
     
