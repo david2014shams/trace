@@ -1,0 +1,23 @@
+{
+  "name": "trace",
+  "version": "1.0.0",
+  "description": "## Open file",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/david2014shams/trace.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/david2014shams/trace/issues"
+  },
+  "homepage": "https://github.com/david2014shams/trace#readme",
+  "dependencies": {
+    "knockout": "^3.4.2"
+  }
+}

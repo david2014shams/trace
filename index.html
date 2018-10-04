@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Call stack</title>
+    <link rel="stylesheet" href="./aero.css">
+    <script src="./node_modules/knockout/build/output/knockout-latest.debug.js"></script>
+</head>
+
+<body>
+
+
+    <div data-bind="text: name"></div>
+    <a href="#" data-bind="click: function() { vm.items.remove($data); }">
+        remove
+    </a>
+    <pre data-bind="text: JSON.stringify(ko.toJS($data), null, 2)"></pre>
+    <button data-bind="click: console.log(ko.toJS($data))">$data</button>
+    <button data-bind="click: alert(ko.toJS($data))">alert($data)</button>
+
+    <div class="ep" id="fixed">Fixed</div>
+    <div class="ep" id="relative">Relative<div class="ep" id="absolute">Absolute</div>
+    </div>
+    <div class="ep">Normal</div>
+    <div class="ep">Normal
+        <div class="ep" id="relative">Relative<div class="ep" id="absolute">Absolute
+                <div class="ep" id="relative">Relative<div class="ep" id="absolute">Absolute</div>
+                </div>
+            </div>
+            <div class="ep">Normal
+                <div class="ep" id="fixed">Fixed</div>
+            </div>
+
+
+            <script>
+                var vm = {
+                    name: ko.observable('David'),
+                    items: ko.observable([1,2,3,4])
+                }
+                ko.applyBindings(vm);
+                (function (name) {
+                    function first(name) {
+                        second(name)
+                    }
+                    function second(name) {
+                        console.log(name);
+                    }
+
+                })('David')
+            </script>
+</body>
+
+</html>
